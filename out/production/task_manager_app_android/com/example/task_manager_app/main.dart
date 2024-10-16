@@ -4,10 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/authentication/authentication_bloc.dart';
 import 'bloc/authentication/authentication_event.dart';
-import 'bloc/authentication/authentication_event.dart';
-import 'bloc/authentication/authentication_event.dart';
 import 'bloc/authentication/authentication_state.dart';
-import 'bloc/login/login_state.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 import 'pages/splash_page.dart';
@@ -21,8 +18,7 @@ void main() {
     BlocProvider<AuthenticationBloc>(
       create: (context) => AuthenticationBloc(
         repository: authRepository,
-        AppStarted(),
-      ),
+      )..add(AppStarted()),
       child: MyApp(repository: authRepository),
     ),
   );
@@ -38,7 +34,7 @@ class MyApp extends StatelessWidget {
     //final authenticationBloc = AuthenticationBloc(repository: repository);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Task Management App',
+      title: 'Simple Auth App',
       theme: ThemeData(primaryColor: Colors.deepPurple),
       home: BlocBuilder(
         bloc: BlocProvider.of<AuthenticationBloc>(context),
